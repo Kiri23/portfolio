@@ -6,11 +6,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/main.css">
+    <!-- Modificar luego para copiar solamente los icon que quiero y no tener 
+    que descargar toda la libreria de FontAwesome  -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous" async>
     <title>Welcome to my Portfolio</title>
 </head>
 
-<body>
-    <h1>hello</h1>
+<body id="bg-img">
+    <header>
+        <!-- Este es el hamburger menu y los div de abajo son 
+        las rayitas del hamburger menu -->
+        <div class="menu-btn">
+            <div class="btn-line"></div>
+            <div class="btn-line"></div>
+            <div class="btn-line"></div>
+        </div>
+        <!-- Menu que se muestra cuando el hamburger menu se abre -->
+        <nav class="menu">
+            <!-- Mi foto o el branding -->
+            <div class="menu-branding">
+                <div class="portrait">
+                </div>
+            </div>
+            <ul class="menu-nav">
+                <li class="nav-item">
+                    <a href="/" class="nav-link"> Home </a>
+
+                </li>
+                <li class="nav-item">
+                    <a href="/about.html" class="nav-link"> About </a>
+
+                </li>
+                <li class="nav-item">
+                    <a href="/work.html" class="nav-link"> My Work </a>
+
+                </li>
+                <li class="nav-item">
+                    <a href="/contact.html" class="nav-link"> How to reach me </a>
+
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Fin del hamburger menu -->
+    <main id="home">
+        <h1 class="lg-heading">
+            Christian
+            <span class="text-secondary"> Nogueras </span>
+        </h1>
+        <h2 class="sm-heading">
+            Artificial Inteligence, Data Science, Web Developer & Entrepreneur
+        </h2>
+        <div class="icons">
+            <a href="#!">
+                <i class="fab fa-twitter fa-2x"></i>
+            </a>
+            <a href="#!">
+                <i class="fab fa-facebook fa-2x"></i>
+            </a>
+            <a href="#!">
+                <i class="fab fa-linkedin fa-2x"></i>
+            </a>
+            <a href="#!">
+                <i class="fab fa-github fa-2x"></i>
+            </a>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
 </body>
 
 </html>
