@@ -6,7 +6,8 @@
   "homepage": "https://kiri23.github.io/portfolio",
   "scripts": {
     "sass": "node-sass -w scss/  -o dist/css/ --recursive",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "help": "gh-pages --help"
   },
   "keywords": [
     "portfolio",
@@ -18,7 +19,9 @@
   "author": "Christian Nogueras Rosado",
   "license": "ISC",
   "dependencies": {
-    "gh-pages": "^1.2.0",
     "node-sass": "^4.9.3"
+  },
+  "devDependencies": {
+    "gh-pages": "^1.2.0"
   }
 }

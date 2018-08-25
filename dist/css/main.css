@@ -295,6 +295,10 @@ main {
     main .lg-heading {
       margin-top: 1rem;
       font-size: 4rem; }
+  .menu-branding {
+    height: 30vh; }
+  .menu-nav {
+    height: 70vh; }
   .menu-btn {
     top: 0;
     right: 18px; }
