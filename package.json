@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "My portfolio",
   "main": "index.js",
+  "homepage": "https://kiri23.github.io/portfolio",
   "scripts": {
-    "sass": "node-sass -w scss/  -o dist/css/ --recursive"
+    "sass": "node-sass -w scss/  -o dist/css/ --recursive",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [
     "portfolio",
@@ -16,6 +18,7 @@
   "author": "Christian Nogueras Rosado",
   "license": "ISC",
   "dependencies": {
+    "gh-pages": "^1.2.0",
     "node-sass": "^4.9.3"
   }
 }
