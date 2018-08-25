@@ -3,29 +3,3 @@ $secondary-color: #eece1a;
 $show-home-image: true;
 $home-image: url(../img/background.jpg);
 $background-opacity:0.5;
-//easeOut transition
-@mixin easeOut {
-    transition: all 0.5s ease-out;
-}
-
-@mixin background {
-    @if $show-home-image {
-        // the class that uses this mixing need to have a class name bg-image for it to work. TODO: If I want to make it general I can pass parameter to this mixin
-        &#bg-img {
-            background: $home-image; // No quiero que la imagen se mueva, por eso es el value fixed.  
-            background-attachment: fixed;
-            background-size: cover; // show the entire image
-        }
-        &:after {
-            // after pone un elemento en el dom y el contenido que va a tener ese elemento es nothing(''). Queremos darle transparencia a la imagen y esta es la forma en que lo hacemos 
-            content: '';
-            position: absolute; // queremos cubrir todo el elemento en donde este el mixing, queremos que sea lo ultimo en el z-index y la transparencia va a ser del primary-color
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: rgba($primary-color, $background-opacity);
-        }
-    }
-}

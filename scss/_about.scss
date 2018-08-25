@@ -1,0 +1,44 @@
+.about-body {
+    display: grid;
+    grid-gap: 30px; // añadir espacios arriba y abajo(margin)
+    grid-template-areas: 'bioimage bio bio' 'job1 job2 job3';
+    grid-template-columns: repeat(3, 1fr); // horinzotal 2 elemntos hacia al lado
+    .bio-image {
+        grid-area: bioimage; // 
+        margin: auto;
+        border-radius: 50%;
+        border: $secondary-color 3px solid;
+    }
+    .bio {
+        grid-area: bio;
+        font-size: 1.5rem;
+    }
+    .job-1 {
+        grid-area: job1;
+    }
+    .job-2 {
+        grid-area: job2;
+    }
+    .job-3 {
+        grid-area: job3;
+    }
+    .job {
+        background: lighten($color: $primary-color, $amount: 5);
+        padding: 0.5rem;
+        border-bottom: $secondary-color 5px solid; // width: 80%;
+    }
+}
+
+main {
+    // height: 100% Si el Height es 100% lo que hace es que es 100% del contenido que tenga osea el height va a ser el contenido que yo tenga
+    // To made a Sticky footer. Siempre la altura del height del main que es todo el contenido de la pagina va ser toda la pantalla menos los 60 px del fotter
+    min-height: calc(100vh - 60px);
+}
+
+#main-footer {
+    text-align: center;
+    padding: 1rem;
+    background: darken($primary-color, 10);
+    color: set-text-color($primary-color);
+    height: 60px;
+}

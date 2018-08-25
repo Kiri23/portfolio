@@ -1,0 +1,31 @@
+@mixin background($html-id, $image, $show-image, $primary-color:#444, $background-opacity:0.5) {
+    @if $show-image {
+        // the class that uses this mixing need to have a class name bg-image for it to work. TODO: If I want to make it general I can pass parameter to this mixin
+        &#{$html-id} {
+            background: $image; // No quiero que la imagen se mueva, por eso es el value fixed.  
+            background-attachment: fixed;
+            background-size: cover; // show the entire image
+        }
+        &:after {
+            // after pone un elemento en el dom y el contenido que va a tener ese elemento es nothing(''). Queremos darle transparencia a la imagen y esta es la forma en que lo hacemos 
+            content: '';
+            position: absolute; // queremos cubrir todo el elemento en donde este el mixing, queremos que sea lo ultimo en el z-index y la transparencia va a ser del primary-color
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: rgba($primary-color, $background-opacity);
+        }
+    }
+}
+
+// Set Text Color. Para que cambie el color de las letras para un background clarito y letras oscuras para background oscuros. Fucntion are used to return values. Mixin can't return values
+@function set-text-color($color) {
+    @if (lightness($color) > 40) {
+        @return #000;
+    }
+    @else {
+        @return #fff;
+    }
+}

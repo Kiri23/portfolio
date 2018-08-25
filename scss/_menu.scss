@@ -1,0 +1,123 @@
+// Menu Button - Este css dentro de la clase lo que hace es que dibuja las lineas para que parezca como el hamburger menu y ademas hace la transition para que se convierta en una X
+.menu-btn {
+    // Lo psoiciona en la esquina el elemento del menu
+    position: absolute;
+    z-index: 3;
+    right: 35px;
+    top: 35px;
+    cursor: pointer;
+    @include easeOut;
+    .btn-line {
+        // Hace las lineas del hamburger menu
+        width: 28px;
+        height: 3px;
+        margin: 0 0 5px 0;
+        background: set-text-color($primary_color);
+        @include easeOut;
+    } // Rotate Into X With Menu Lines
+    &.close {
+        transform: rotate(180deg);
+        .btn-line {
+            // Line 1 - Rotate
+            &:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            } // Line 2 - Hide
+            &:nth-child(2) {
+                opacity: 0;
+            } // Line 3 - Rotate
+            &:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+        }
+    }
+}
+
+// Menu Overlay. El class donde empieza el navbar y el portrait
+// Aqui esta todo el css correspodiente a las paredes
+.menu {
+    position: fixed;
+    width: 100%; // background: #fff;
+    top: 60;
+    opacity: 0.9;
+    visibility: hidden; //para empezar nos queremos mostrar los elementos del menu. los queremos mostrar cuando se clickee (en la clase de abajo)
+    &.show {
+        visibility: visible;
+    } // there is no need to specify menu-branding if we're inside the menu class
+    &-branding,
+    &-nav {
+        // remember aqui van a estar las dos paredes cuando se presiona el menu
+        display: flex;
+        flex-flow: column wrap; // mean coming up and down instead of left to right
+        align-items: center; //
+        justify-content: center; // allign vertically and horinzotal
+        float: left; // los pone hacia al lado
+        width: 50%; // because we want each side cover the half of the screen
+        height: 100vh;
+        overflow: hidden;
+    } //items
+    &-nav {
+        margin: 0;
+        padding: 0;
+        background: darken($primary_color, 5); // oscurece un color por 5 unidades
+        list-style: none; // saca los puntos de los bullets point
+        transform: translate3d(0, -100%, 0); // primero esconde el menu
+        @include easeOut; //luego haz la transicion
+        &.show {
+            // Despues de la animacion muestra el menu. La animacion del menu va a corde con el rotation del hamburger menu
+            // Slide in from top
+            transform: translate3d(0, 0, 0);
+        }
+    } //
+    // Branding side
+    &-branding {
+        background: $primary_color;
+        transform: translate3d(0, 100%, 0); // Do the same thing as the other side
+        @include easeOut;
+        &.show {
+            // Slide in from bottom
+            transform: translate3d(0, 0, 0);
+        } //
+        // Aqui va a aparecer la imagen
+        .portrait {
+            width: 250px;
+            height: 250px;
+            background: url('../img/portrait.jpg');
+            border-radius: 50%;
+            border: solid 3px $secondary-color;
+        }
+    } //
+    // Los menus items
+    .nav-item {
+        transform: translate3d(600px, 0, 0); // this can be done also with translate. En esta manera slide in from the right
+        @include easeOut;
+        &.show {
+            // Slide in from right
+            transform: translate3d(0, 0, 0);
+        }
+        &.current>a {
+            color: $secondary-color;
+        }
+    } //
+    // Los nombres de los menus y sus links
+    .nav-link {
+        display: inline-block; // es lo que le da la separacion
+        position: relative;
+        font-size: 30px;
+        text-transform: uppercase;
+        padding: 1rem 0;
+        font-weight: 300;
+        color: set-text-color($primary_color);
+        text-decoration: none;
+        @include easeOut;
+        &:hover {
+            color: $secondary-color;
+        }
+    }
+}
+
+// Delay each nav item slide by 0.1s
+@for $x from 1 through 4 {
+    .nav-item:nth-child(#{$x}) {
+        transition-delay: $x * 0.1s; // para que cada uno aparezca despues del otro como escaleritas
+    }
+}

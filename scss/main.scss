@@ -1,13 +1,19 @@
 @import 'config';
+@import 'library/media_query';
+@import 'library/animation';
+@import 'library/util';
+@import 'menu';
+@import 'about';
+@import 'work';
 * {
     // Dont add padding/marging to the size of the element
     box-sizing: border-box;
 }
 
 body {
-    @include background;
+    @include background($html-id: '#bg-img', $image:$home-image, $show-image:$show-home-image);
     background: $primary-color;
-    color: white;
+    color: set-text-color($primary-color);
     height: 100%;
     margin: 0px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -19,7 +25,8 @@ h1,
 h2,
 h3 {
     margin: 0;
-    font-weight: 400; // An h1 or h2,3 with a class of lg-heading
+    font-weight: 400; //
+    // An h1 or h2,3 with a class of lg-heading
     &.lg-heading {
         // One rem unit is 16 px by default unless you change the html parent font-size properties
         font-size: 6rem;
@@ -37,7 +44,7 @@ a {
     text-decoration: none;
 }
 
-// Menu button
+// El header va a contener el menu button y las dos paredes cuando se presiona el button (portratit y el menu nav bar)
 header {
     position: fixed; // I want the position to stays always ath the same place
     z-index: 2;
@@ -57,6 +64,7 @@ main {
         a {
             // a tag nested inside icon class
             padding: 0.4rem;
+            color: set-text-color($primary-color);
             &:hover {
                 // is the same as doing a:hover 
                 color: $secondary-color;
@@ -71,3 +79,6 @@ main {
         }
     }
 }
+
+// We want the media query to run at the very last
+@import 'mobile';
