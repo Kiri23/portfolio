@@ -1,0 +1,85 @@
+<!-- TODOO 
+    Aqui estoy reptiendo el codigo del hamburger menu
+    y las paredes ese codigo debe estar en un componente.
+    Must Be en un componente el codigo de las paredes y el Hamburger menu
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/main.css">
+    <!-- Modificar luego para copiar solamente los icon que quiero y no tener 
+    que descargar toda la libreria de FontAwesome  -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous" async>
+    <title>Contact Me</title>
+</head>
+
+<body>
+    <!--COMPONENTE DEL HAMBURGER MENU Y LAS PAREDES  -->
+    <header>
+        <!-- Este es el hamburger menu y los div de abajo son 
+        las rayitas del hamburger menu -->
+        <div class="menu-btn">
+            <div class="btn-line"></div>
+            <div class="btn-line"></div>
+            <div class="btn-line"></div>
+        </div>
+        <!-- Menu que se muestra cuando el hamburger menu se abre -->
+        <nav class="menu">
+            <!-- Mi foto o el branding -->
+            <div class="menu-branding">
+                <div class="portrait">
+                </div>
+            </div>
+            <ul class="menu-nav">
+                <li class="nav-item">
+                    <a href="./" class="nav-link"> Home </a>
+
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link"> About </a>
+
+                </li>
+                <li class="nav-item">
+                    <a href="work.html" class="nav-link"> My Work </a>
+
+                </li>
+                <li class="nav-item current">
+                    <a href="contact.html" class="nav-link"> How to reach me </a>
+
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!--FINAL DEL COMPONENTE DEL HAMBURGER MENU Y LAS PAREDES  -->
+    <main id="contact">
+        <h1 class="lg-heading">
+            Contact
+            <span class="text-secondary"> Me </span>
+        </h1>
+        <h2 class="sm-heading">
+            This is how you can reach me...
+        </h2>
+        <div class="boxes">
+            <div>
+                <span class="text-secondary">Email: </span> christian_nogueras94@hotmail.com
+            </div>
+            <div>
+                <span class="text-secondary">Linkedin: </span> (555) 555-5555
+            </div>
+            <div>
+                <span class="text-secondary">Address: </span> 50 Main st Boston MA 02101
+            </div>
+        </div>
+    </main>
+
+    <footer id="main-footer">
+        Copyright &copy; 2018
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
