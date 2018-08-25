@@ -1,0 +1,42 @@
+.projects {
+    display: grid;
+    grid-gap: 0.70em;
+    grid-template-columns: repeat(3, 1fr);
+    img {
+        // All the IMG inside projects
+        // Will made 100% width of the parent container in this case .projects
+        width: 100%;
+        border: 3px #fff solid;
+        &:hover {
+            opacity: 0.5;
+            border-color: $secondary-color;
+            @include easeOut;
+        }
+    }
+}
+
+// Buttons of Projects but work for every class of buttons
+// share the css between the two buttons
+.btn {
+    display: block;
+    padding: 0.5rem 1rem;
+    border: 0; //no border
+    margin-bottom: 0.3rem;
+    &:hover {
+        background: $secondary-color;
+        color: set-text-color($secondary-color);
+        @include easeOut;
+    }
+}
+
+.btn-dark {
+    @extend .btn; // now I extending the css code for both classes 
+    background: darken($color: $primary-color, $amount: 50);
+    color: #fff;
+}
+
+.btn-light {
+    @extend .btn;
+    background: lighten($color: $primary-color, $amount: 50);
+    color: #333;
+}

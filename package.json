@@ -14,5 +14,8 @@
     "animation"
   ],
   "author": "Christian Nogueras Rosado",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^4.9.3"
+  }
 }

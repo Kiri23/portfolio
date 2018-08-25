@@ -5,6 +5,10 @@
         width: 80%; //
         //background: blue !important;
     } // END ABOUT MOBILE CSS
+    //Work Mobile Css
+    .projects {
+        grid-template-columns: repeat(4, 1fr);
+    } //End work Mobile Css
 }
 
 // Desktops & Laptops
@@ -17,6 +21,10 @@
         width: 80%; //
         //background: blue !important;
     } // END ABOUT MOBILE CSS
+    //Work Mobile Css
+    .projects {
+        grid-template-columns: repeat(3, 1fr);
+    } //End work Mobile Css
 }
 
 // Tablets & Small Laptops
@@ -59,6 +67,10 @@
         grid-template-areas: 'bioimage' 'bio' 'job1' 'job2' 'job3';
         grid-template-columns: 1fr; // we need to change pq ahora queremos un solo elemento horizontal
     } // END ABOUT MOBILE CSS
+    //WORK Mobile Css
+    .projects {
+        grid-template-columns: repeat(2, 1fr);
+    } //End work Mobile Css
 }
 
 // Smartphones
@@ -73,5 +85,9 @@
             margin-top: 1rem;
             font-size: 5rem;
         }
-    }
+    } //
+    //Work Mobile Css
+    .projects {
+        grid-template-columns: 1fr;
+    } //End work Mobile Css
 }
