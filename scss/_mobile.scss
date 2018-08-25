@@ -74,6 +74,13 @@
     .projects {
         grid-template-columns: repeat(2, 1fr);
     } //End work Mobile Css
+    //Contact mobile CSS
+    .boxes {
+        div {
+            font-size: 1.22rem;
+            padding: 1.5rem 1.5rem;
+        }
+    } //End Contact mobile CSS
 }
 
 // Smartphones
