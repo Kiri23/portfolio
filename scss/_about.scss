@@ -1,6 +1,8 @@
+@import 'about_skill';
 .about-body {
     display: grid;
     grid-gap: 30px; // añadir espacios arriba y abajo(margin)
+    margin-bottom:50px;
     grid-template-areas: 'bioimage bio bio' 'job1 job2 job3';
     grid-template-columns: repeat(3, 1fr); // horinzotal 2 elemntos hacia al lado
     .bio-image {
@@ -23,7 +25,7 @@
         grid-area: job3;
     }
     .job {
-        background: lighten($color: $primary-color, $amount: 5);
+        background: lighten($color: $primary-color, $amount: 5); 
         padding: 0.5rem;
         border-bottom: $secondary-color 5px solid; // width: 80%; 
     }
@@ -42,3 +44,4 @@ main {
     color: set-text-color($primary-color);
     height: 60px;
 }
+

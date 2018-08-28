@@ -7,100 +7,227 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/main.css">
-    <!-- Modificar luego para copiar solamente los icon que quiero y no tener 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Modificar luego para copiar solamente los icon que quiero y no tener 
     que descargar toda la libreria de FontAwesome  -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-        crossorigin="anonymous" async>
-    <title>About Me</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous" async>
+  <title>About Me</title>
 </head>
 
 <body>
-    <!--COMPONENTE DEL HAMBURGER MENU Y LAS PAREDES  -->
-    <header>
-        <!-- Este es el hamburger menu y los div de abajo son 
+  <!--COMPONENTE DEL HAMBURGER MENU Y LAS PAREDES  -->
+  <header>
+    <!-- Este es el hamburger menu y los div de abajo son 
         las rayitas del hamburger menu -->
-        <div class="menu-btn">
-            <div class="btn-line"></div>
-            <div class="btn-line"></div>
-            <div class="btn-line"></div>
+    <div class="menu-btn">
+      <div class="btn-line"></div>
+      <div class="btn-line"></div>
+      <div class="btn-line"></div>
+    </div>
+    <!-- Menu que se muestra cuando el hamburger menu se abre -->
+    <nav class="menu">
+      <!-- Mi foto o el branding -->
+      <div class="menu-branding">
+        <div class="portrait">
         </div>
-        <!-- Menu que se muestra cuando el hamburger menu se abre -->
-        <nav class="menu">
-            <!-- Mi foto o el branding -->
-            <div class="menu-branding">
-                <div class="portrait">
-                </div>
-            </div>
-            <ul class="menu-nav">
-                <li class="nav-item">
-                    <a href="./" class="nav-link"> Home </a>
+      </div>
+      <ul class="menu-nav">
+        <li class="nav-item">
+          <a href="./" class="nav-link"> Home </a>
 
-                </li>
-                <li class="nav-item current">
-                    <a href="about.html" class="nav-link"> About </a>
+        </li>
+        <li class="nav-item current">
+          <a href="about.html" class="nav-link"> About </a>
 
-                </li>
-                <li class="nav-item">
-                    <a href="work.html" class="nav-link"> My Work </a>
+        </li>
+        <li class="nav-item">
+          <a href="work.html" class="nav-link"> My Work </a>
 
-                </li>
-                <li class="nav-item">
-                    <a href="contact.html" class="nav-link"> How to reach me </a>
+        </li>
+        <li class="nav-item">
+          <a href="contact.html" class="nav-link"> How to reach me </a>
 
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <!--FINAL DEL COMPONENTE DEL HAMBURGER MENU Y LAS PAREDES  -->
-    <main id="about">
-        <h1 class="lg-heading">
-            About
-            <span class="text-secondary"> Me </span>
-        </h1>
-        <h2 class="sm-heading">
-            Let me tell you a few things...
-        </h2>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <!--FINAL DEL COMPONENTE DEL HAMBURGER MENU Y LAS PAREDES  -->
+  <main id="about">
+    <h1 class="lg-heading">
+      About
+      <span class="text-secondary"> Me </span>
+    </h1>
+    <h2 class="sm-heading">
+      Let me tell you a few things...
+    </h2>
 
-        <div class="about-body">
-            <img src="img/portrait.jpg" alt="Christian Nogueras" class="bio-image">
-            <div class="bio">
-                <h3 class="text-secondary">BIO</h3>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt magni nam nisi quae vitae? Quod molestiae
-                    ipsa autem natus eum vel ducimus nulla harum voluptatem eligendi! Unde, reiciendis? Praesentium, laborum.</p>
-            </div>
-            <!-- COMPONET OF JOB GALLERY -->
+    <div class="about-body">
+      <img src="img/portrait.jpg" alt="Christian Nogueras" class="bio-image">
+      <div class="bio">
+        <h3 class="text-secondary">BIO</h3>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt magni nam nisi quae vitae? Quod molestiae ipsa autem natus eum vel ducimus nulla harum voluptatem eligendi! Unde, reiciendis? Praesentium, laborum.</p>
+      </div>
+      <!-- COMPONET OF JOB GALLERY -->
 
-            <div class="job job-1">
-                <h3>Web Developer</h3>
-                <h6>Founder and programmer</h6>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates perferendis totam enim. Nesciunt porro
-                    dolores expedita dolor necessitatibus deserunt nemo.</p>
-            </div>
-            <div class="job job-2">
-                <h3>Artificial Inteligence</h3>
-                <h6>Full Stack Developer</h6>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates perferendis totam enim. Nesciunt porro
-                    dolores expedita dolor necessitatibus deserunt nemo.</p>
-            </div>
-            <div class="job job-3">
-                <h3>Backend Developer</h3>
-                <h6>Software Developer</h6>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates perferendis totam enim. Nesciunt porro
-                    dolores expedita dolor necessitatibus deserunt nemo.</p>
-            </div>
+      <div class="job job-1">
+        <h3>Web Developer</h3>
+        <h6>Founder and programmer</h6>
+        <p>Lorem2 ipsum dolor sit amet consectetur adipisicing elit. Voluptates perferendis totam enim. Nesciunt porro dolores expedita dolor necessitatibus deserunt nemo.</p>
+      </div>
+      <div class="job job-2">
+        <h3>Artificial Inteligence</h3>
+        <h6>Full Stack Developer</h6>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates perferendis totam enim. Nesciunt porro dolores expedita dolor necessitatibus deserunt nemo.</p>
+      </div>
+      <div class="job job-3">
+        <h3>Backend Developer</h3>
+        <h6>Software Developer</h6>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates perferendis totam enim. Nesciunt porro dolores expedita dolor necessitatibus deserunt nemo.</p>
+      </div>
+    </div>
+    <!--  Skills Section -->
+    <div class="skills">
+      <ul class="lines">
+        <li class="line l--0">
+          <span class="line__label title">
+        Skill level:
+      </span>
+        </li>
+        <li class="line l--25">
+          <span class="line__label">
+        The basics
+      </span>
+        </li>
+        <li class="line l--50">
+          <span class="line__label">
+        Advanced
+      </span>
+        </li>
+        <li class="line l--75">
+          <span class="line__label">
+        Seasoned
+      </span>
+        </li>
+        <li class="line l--100">
+          <span class="line__label">
+        Expert
+      </span>
+        </li>
+      </ul>
+
+      <div class="charts">
+        <div class="chart chart--dev">
+          <span class="chart__title">Development</span>
+          <ul class="chart--horiz">
+            <li class="chart__bar" style="width: 98%;">
+              <span class="chart__label">
+            HTML5
+          </span>
+            </li>
+            <li class="chart__bar" style="width: 98%;">
+              <span class="chart__label">
+            CSS3 & SCSS
+          </span>
+            </li>
+            <li class="chart__bar" style="width: 70%;">
+              <span class="chart__label">
+            JavaScript
+          </span>
+            </li>
+            <li class="chart__bar" style="width: 40%;">
+              <span class="chart__label">
+            AngularJS
+          </span>
+            </li>
+            <li class="chart__bar" style="width: 40%;">
+              <span class="chart__label">
+            ReactJS
+          </span>
+            </li>
+            <li class="chart__bar" style="width: 60%;">
+              <span class="chart__label">
+            jQuery
+          </span>
+            </li>
+            <li class="chart__bar" style="width: 55%;">
+              <span class="chart__label">
+            NodeJS
+          </span>
+            </li>
+            <li class="chart__bar" style="width: 50%;">
+              <span class="chart__label">
+            Grunt / Gulp / Webpack
+          </span>
+            </li>
+            <li class="chart__bar" style="width: 40%;">
+              <span class="chart__label">
+            .NET
+          </span>
+            </li>
+            <li class="chart__bar" style="width: 60%;">
+              <span class="chart__label">
+            Umbraco
+          </span>
+            </li>
+            <li class="chart__bar" style="width: 60%;">
+              <span class="chart__label">
+            Sitecore
+          </span>
+            </li>
+          </ul>
         </div>
-    </main>
-  <h2>
-     test from codeanywhere mobile
-  </h2>
 
-    <footer id="main-footer">
-        Copyright &copy; 2018
-    </footer>
+        <div class="chart chart--prod">
+          <span class="chart__title">Productivity</span>
+          <ul class="chart--horiz">
+            <li class="chart__bar" style="width: 75%;">
+              <span class="chart__label">
+          Git + Github, Bitbucket & Sourcetree
+        </span>
+            </li>
+            <li class="chart__bar" style="width: 80%;">
+              <span class="chart__label">
+          Microsoft Office
+        </span>
+            </li>
+          </ul>
+        </div>
 
-    <script src="js/main.js"></script>
+        <div class="chart chart--design">
+          <span class="chart__title">Design</span>
+          <ul class="chart--horiz">
+            <li class="chart__bar" style="width: 45%;">
+              <span class="chart__label">
+          Photoshop
+        </span>
+            </li>
+            <li class="chart__bar" style="width: 35%;">
+              <span class="chart__label">
+          Illustrator
+        </span>
+            </li>
+            <li class="chart__bar" style="width: 60%;">
+              <span class="chart__label">
+          User Experience
+        </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- End Skill Section      -->
+
+  </main>
+
+
+
+
+  <footer id="main-footer">
+    Copyright &copy; 2018
+  </footer>
+
+  <script src="js/main.js"></script>
 </body>
