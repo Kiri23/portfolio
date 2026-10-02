@@ -290,12 +290,53 @@ img {
   transform: translateY(-3px);
 }
 
+.project__visual {
+  aspect-ratio: 16 / 10;
+  width: 100%;
+  padding: var(--kiri-e-5);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--kiri-e-4);
+  border: var(--kiri-b-hilo) solid var(--kiri-linea);
+  border-radius: var(--kiri-r-lg);
+  background: var(--kiri-panel);
+  transition: transform var(--kiri-mov) var(--kiri-curva);
+}
+
+.project:hover .project__visual {
+  transform: translateY(-3px);
+}
+
+.project__swatches {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: var(--kiri-e-2);
+}
+
+.project__swatches li {
+  width: 40px;
+  height: 40px;
+  border: var(--kiri-b-hilo) solid var(--kiri-linea);
+  border-radius: var(--kiri-r-sm);
+}
+
 .project__meta {
   padding-top: var(--kiri-e-3);
   display: flex;
+  flex-direction: column;
+  gap: var(--kiri-e-3);
+}
+
+.project__headline {
+  display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: var(--kiri-e-4);
+  flex-wrap: wrap;
+  gap: var(--kiri-e-3) var(--kiri-e-4);
 }
 
 .project h2 {
@@ -303,11 +344,35 @@ img {
   font-size: var(--kiri-t-md);
 }
 
-.project p {
+.project__tags {
   margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kiri-e-2);
+}
+
+.project__tags li {
+  padding: 2px var(--kiri-e-2);
+  border: var(--kiri-b-hilo) solid var(--kiri-linea);
+  border-radius: var(--kiri-r-full);
   color: var(--kiri-tinta-suave);
   font: 500 var(--kiri-t-xs)/1.4 var(--kiri-mono);
   text-transform: uppercase;
+}
+
+.project__description {
+  margin: 0;
+  max-width: 46rem;
+  color: var(--kiri-tinta-suave);
+  font: var(--kiri-t-sm)/var(--kiri-i-normal) var(--kiri-ui);
+}
+
+.project__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kiri-e-3);
 }
 
 .contact-layout {
@@ -429,12 +494,6 @@ img {
 
   .project:nth-child(3n) {
     grid-column: auto;
-  }
-
-  .project__meta {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: var(--kiri-e-1);
   }
 
   .mobile-nav {
