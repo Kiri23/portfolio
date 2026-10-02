@@ -278,6 +278,8 @@ img {
 .project__image {
   aspect-ratio: 16 / 10;
   width: 100%;
+  height: auto;
+  object-position: left top;
   object-fit: cover;
   border: var(--kiri-b-hilo) solid var(--kiri-linea);
   border-radius: var(--kiri-r-lg);
