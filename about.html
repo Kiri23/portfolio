@@ -1,103 +1,81 @@
-<!-- TODOO 
-    Aqui estoy reptiendo el codigo del hamburger menu
-    y las paredes ese codigo debe estar en un componente.
-    Must Be en un componente el codigo de las paredes y el Hamburger menu
--->
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html lang="es" data-kiri="oscuro">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/main.css">
-    <!-- Modificar luego para copiar solamente los icon que quiero y no tener 
-    que descargar toda la libreria de FontAwesome  -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-        crossorigin="anonymous" async>
-    <title>About Me</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Perfil y áreas de trabajo de Christian Nogueras.">
+    <link rel="stylesheet" href="css/portfolio.css">
+    <title>Perfil · Christian Nogueras</title>
 </head>
-
 <body>
-    <!--COMPONENTE DEL HAMBURGER MENU Y LAS PAREDES  -->
-    <header>
-        <!-- Este es el hamburger menu y los div de abajo son 
-        las rayitas del hamburger menu -->
-        <div class="menu-btn">
-            <div class="btn-line"></div>
-            <div class="btn-line"></div>
-            <div class="btn-line"></div>
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="brand" href="./" aria-label="Christian Nogueras, inicio">
+                <span class="kiri-marca-punto" aria-hidden="true"></span>
+                Christian Nogueras
+            </a>
+            <nav class="desktop-nav" aria-label="Navegación principal">
+                <a href="./">Inicio</a>
+                <a href="about.html" aria-current="page">Perfil</a>
+                <a href="work.html">Trabajo</a>
+                <a href="contact.html">Contacto</a>
+            </nav>
+            <button class="kiri-btn kiri-btn--texto theme-toggle" type="button" data-theme-toggle>Claro</button>
         </div>
-        <!-- Menu que se muestra cuando el hamburger menu se abre -->
-        <nav class="menu">
-            <!-- Mi foto o el branding -->
-            <div class="menu-branding">
-                <div class="portrait">
-                </div>
-            </div>
-            <ul class="menu-nav">
-                <li class="nav-item">
-                    <a href="./" class="nav-link"> Home </a>
-
-                </li>
-                <li class="nav-item current">
-                    <a href="about.html" class="nav-link"> About </a>
-
-                </li>
-                <li class="nav-item">
-                    <a href="work.html" class="nav-link"> My Work </a>
-
-                </li>
-                <li class="nav-item">
-                    <a href="contact.html" class="nav-link"> How to reach me </a>
-
-                </li>
-            </ul>
-        </nav>
     </header>
-    <!--FINAL DEL COMPONENTE DEL HAMBURGER MENU Y LAS PAREDES  -->
-    <main id="about">
-        <h1 class="lg-heading">
-            About
-            <span class="text-secondary"> Me </span>
-        </h1>
-        <h2 class="sm-heading">
-            Let me tell you a few things...
-        </h2>
 
-        <div class="about-body">
-            <img src="img/portrait.jpg" alt="Christian Nogueras" class="bio-image">
-            <div class="bio">
-                <h3 class="text-secondary">BIO</h3>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt magni nam nisi quae vitae? Quod molestiae
-                    ipsa autem natus eum vel ducimus nulla harum voluptatem eligendi! Unde, reiciendis? Praesentium, laborum.</p>
-            </div>
-            <!-- COMPONET OF JOB GALLERY -->
+    <main class="page-shell">
+        <header class="page-intro">
+            <p class="eyebrow">Perfil</p>
+            <h1 class="page-title">Curiosidad técnica con enfoque humano.</h1>
+            <p class="lede">Trabajo donde el software, los datos y las ideas de negocio se encuentran.</p>
+        </header>
 
-            <div class="job job-1">
-                <h3>Web Developer</h3>
-                <h6>Founder and programmer</h6>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates perferendis totam enim. Nesciunt porro
-                    dolores expedita dolor necessitatibus deserunt nemo.</p>
+        <section class="section about-grid" aria-labelledby="bio-title">
+            <img class="about-grid__image" src="img/portrait.jpg" alt="Christian Nogueras" width="250" height="250">
+            <div class="about-copy">
+                <h2 class="section-heading" id="bio-title">Sobre mí</h2>
+                <p>Soy desarrollador de software y emprendedor. Me interesa convertir problemas ambiguos en sistemas claros, medibles y fáciles de usar.</p>
+                <p>Mi práctica cruza desarrollo web, backend, inteligencia artificial y ciencia de datos. Busco comprender el problema antes de elegir la tecnología, y construir la solución más directa que pueda sostenerse en el tiempo.</p>
+                <a class="kiri-btn kiri-btn--primario" href="contact.html">Hablemos de un proyecto</a>
             </div>
-            <div class="job job-2">
-                <h3>Artificial Inteligence</h3>
-                <h6>Full Stack Developer</h6>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates perferendis totam enim. Nesciunt porro
-                    dolores expedita dolor necessitatibus deserunt nemo.</p>
+        </section>
+
+        <section class="section" aria-labelledby="capabilities-title">
+            <p class="eyebrow">Capacidades</p>
+            <h2 class="section-heading" id="capabilities-title">De la pregunta al producto</h2>
+            <div class="capabilities">
+                <article class="capability">
+                    <span class="capability__number">01</span>
+                    <h3>Producto web</h3>
+                    <p>Interfaces accesibles, sistemas frontend y experiencias responsive centradas en tareas reales.</p>
+                </article>
+                <article class="capability">
+                    <span class="capability__number">02</span>
+                    <h3>Backend y datos</h3>
+                    <p>Servicios, modelos de datos e integraciones que mantienen la complejidad bajo control.</p>
+                </article>
+                <article class="capability">
+                    <span class="capability__number">03</span>
+                    <h3>IA aplicada</h3>
+                    <p>Prototipos y automatizaciones que usan inteligencia artificial con un objetivo concreto.</p>
+                </article>
             </div>
-            <div class="job job-3">
-                <h3>Backend Developer</h3>
-                <h6>Software Developer</h6>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates perferendis totam enim. Nesciunt porro
-                    dolores expedita dolor necessitatibus deserunt nemo.</p>
-            </div>
-        </div>
+        </section>
     </main>
 
-    <footer id="main-footer">
-        Copyright &copy; 2018
+    <footer class="site-footer">
+        <span>Christian Nogueras · <span data-current-year></span></span>
+        <span>Puerto Rico</span>
     </footer>
+
+    <nav class="kiri-nav mobile-nav" aria-label="Navegación móvil">
+        <a href="./"><span class="icono" aria-hidden="true">○</span>Inicio</a>
+        <a href="about.html" aria-current="page"><span class="icono" aria-hidden="true">●</span>Perfil</a>
+        <a href="work.html"><span class="icono" aria-hidden="true">□</span>Trabajo</a>
+        <a href="contact.html"><span class="icono" aria-hidden="true">↗</span>Contacto</a>
+    </nav>
 
     <script src="js/main.js"></script>
 </body>
+</html>

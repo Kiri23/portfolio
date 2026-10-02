@@ -1,80 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html lang="es" data-kiri="oscuro">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/main.css">
-    <!-- Modificar luego para copiar solamente los icon que quiero y no tener 
-    que descargar toda la libreria de FontAwesome  -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-        crossorigin="anonymous" async>
-    <title>Welcome to my Portfolio</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Portafolio de Christian Nogueras, desarrollador de software enfocado en inteligencia artificial, datos y productos web.">
+    <link rel="stylesheet" href="css/portfolio.css">
+    <title>Christian Nogueras · Software, datos e IA</title>
 </head>
-
-<body id="bg-img">
-    <header>
-        <!-- Este es el hamburger menu y los div de abajo son 
-        las rayitas del hamburger menu -->
-        <div class="menu-btn">
-            <div class="btn-line"></div>
-            <div class="btn-line"></div>
-            <div class="btn-line"></div>
+<body>
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="brand" href="./" aria-label="Christian Nogueras, inicio">
+                <span class="kiri-marca-punto" aria-hidden="true"></span>
+                Christian Nogueras
+            </a>
+            <nav class="desktop-nav" aria-label="Navegación principal">
+                <a href="./" aria-current="page">Inicio</a>
+                <a href="about.html">Perfil</a>
+                <a href="work.html">Trabajo</a>
+                <a href="contact.html">Contacto</a>
+            </nav>
+            <button class="kiri-btn kiri-btn--texto theme-toggle" type="button" data-theme-toggle>Claro</button>
         </div>
-        <!-- Menu que se muestra cuando el hamburger menu se abre -->
-        <nav class="menu">
-            <!-- Mi foto o el branding -->
-            <div class="menu-branding">
-                <div class="portrait">
-                </div>
-            </div>
-            <ul class="menu-nav">
-                <li class="nav-item current">
-                    <a href="./" class="nav-link"> Home </a>
-
-                </li>
-                <li class="nav-item">
-                    <a href="about.html" class="nav-link"> About </a>
-
-                </li>
-                <li class="nav-item">
-                    <a href="work.html" class="nav-link"> My Work </a>
-
-                </li>
-                <li class="nav-item">
-                    <a href="contact.html" class="nav-link"> How to reach me </a>
-
-                </li>
-            </ul>
-        </nav>
     </header>
-    <!-- Fin del hamburger menu -->
-    <main id="home">
-        <h1 class="lg-heading">
-            Christian
-            <span class="text-secondary"> Nogueras </span>
-        </h1>
-        <h2 class="sm-heading">
-            Artificial Inteligence, Data Science, Web Developer & Entrepreneur
-        </h2>
-        <div class="icons">
-            <a href="#!">
-                <i class="fab fa-twitter fa-2x"></i>
-            </a>
-            <a href="#!">
-                <i class="fab fa-facebook fa-2x"></i>
-            </a>
-            <a href="#!">
-                <i class="fab fa-linkedin fa-2x"></i>
-            </a>
-            <a href="#!">
-                <i class="fab fa-github fa-2x"></i>
-            </a>
-        </div>
+
+    <main class="page-shell">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero__top">
+                <div>
+                    <p class="eyebrow">Software · Datos · Inteligencia artificial</p>
+                    <h1 class="display-title" id="hero-title">Construyo ideas que funcionan.</h1>
+                    <p class="lede">Soy Christian Nogueras. Diseño y desarrollo productos digitales útiles, desde la lógica y los datos hasta la experiencia final.</p>
+                </div>
+                <figure class="hero__portrait">
+                    <img src="img/portrait.jpg" alt="Retrato de Christian Nogueras" width="250" height="250">
+                </figure>
+            </div>
+            <div class="hero__footer">
+                <div class="hero__availability">
+                    <span class="status-dot" aria-hidden="true"></span>
+                    Disponible para colaborar
+                </div>
+                <a class="kiri-btn kiri-btn--primario" href="work.html">Explorar mi trabajo</a>
+            </div>
+        </section>
     </main>
+
+    <footer class="site-footer">
+        <span>Christian Nogueras · <span data-current-year></span></span>
+        <span>Puerto Rico</span>
+    </footer>
+
+    <nav class="kiri-nav mobile-nav" aria-label="Navegación móvil">
+        <a href="./" aria-current="page"><span class="icono" aria-hidden="true">●</span>Inicio</a>
+        <a href="about.html"><span class="icono" aria-hidden="true">○</span>Perfil</a>
+        <a href="work.html"><span class="icono" aria-hidden="true">□</span>Trabajo</a>
+        <a href="contact.html"><span class="icono" aria-hidden="true">↗</span>Contacto</a>
+    </nav>
 
     <script src="js/main.js"></script>
 </body>
-
 </html>
