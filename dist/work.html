@@ -27,44 +27,53 @@
     <main class="page-shell">
         <header class="page-intro">
             <p class="eyebrow">Archivo de trabajo</p>
-            <h1 class="page-title">Exploraciones digitales, de principio a fin.</h1>
-            <p class="lede">Una selección visual de interfaces, sistemas y experimentos construidos alrededor de problemas concretos.</p>
+            <h1 class="page-title">Dos proyectos, de principio a fin.</h1>
+            <p class="lede">Una app que resuelve un problema real de logística en Puerto Rico, y el sistema de diseño que sostiene este mismo sitio.</p>
         </header>
 
         <section class="section project-list" aria-label="Proyectos seleccionados">
             <article class="project">
-                <img class="project__image" src="img/projects/project1.jpg" alt="Vista de una interfaz de proyecto" width="700" height="430">
+                <img class="project__image" src="img/projects/rutero-resumen.png" alt="Pantalla de Rutero: una ruta de 12 paradas ordenada por pueblo, con tiempo y distancia estimados y un botón Ver en Maps" width="780" height="470">
                 <div class="project__meta">
-                    <h2>Interfaz de producto</h2>
-                    <p>Diseño · Frontend</p>
+                    <div class="project__headline">
+                        <h2>Rutero</h2>
+                        <ul class="project__tags">
+                            <li>Geocodificación</li>
+                            <li>ArcGIS</li>
+                            <li>Logística</li>
+                        </ul>
+                    </div>
+                    <p class="project__description">Pegas una lista de direcciones de Puerto Rico &mdash; incluso las difíciles, tipo &ldquo;Carr. 159 Km. 0.7, Morovis&rdquo; &mdash; o las tomas de una foto de factura o etiqueta con el botón &ldquo;Sacar foto&rdquo;; en esta demo pública esa foto devuelve facturas de prueba, así que aquí lo normal es probar con texto o la lista de ejemplo. Rutero normaliza las direcciones, las geocodifica y arma el orden de entrega por pueblo, con tiempo y distancia estimados y un botón para navegar en cada parada. Lo difícil no es el orden: es convertir una dirección puertorriqueña en un punto confiable.</p>
+                    <div class="project__links">
+                        <a class="kiri-btn kiri-btn--primario" href="https://rutero.kiri231.com" target="_blank" rel="noreferrer">Probar la demo <span aria-hidden="true">↗</span></a>
+                    </div>
                 </div>
             </article>
             <article class="project">
-                <img class="project__image" src="img/projects/project2.jpg" alt="Vista de una aplicación web" width="700" height="430">
-                <div class="project__meta">
-                    <h2>Aplicación web</h2>
-                    <p>Producto · Desarrollo</p>
+                <div class="project__visual" aria-hidden="true" inert>
+                    <ul class="project__swatches">
+                        <li style="background: var(--kiri-marca)"></li>
+                        <li style="background: var(--kiri-bien)"></li>
+                        <li style="background: var(--kiri-mal)"></li>
+                        <li style="background: var(--kiri-ojo)"></li>
+                        <li style="background: var(--kiri-tinta-suave)"></li>
+                    </ul>
+                    <button class="kiri-btn kiri-btn--primario" type="button">kiri-btn--primario</button>
                 </div>
-            </article>
-            <article class="project">
-                <img class="project__image" src="img/projects/project3.jpg" alt="Detalle de un sistema digital" width="700" height="430">
                 <div class="project__meta">
-                    <h2>Sistema digital</h2>
-                    <p>Arquitectura · Datos</p>
-                </div>
-            </article>
-            <article class="project">
-                <img class="project__image" src="img/projects/project4.jpg" alt="Exploración visual para un producto" width="700" height="430">
-                <div class="project__meta">
-                    <h2>Exploración visual</h2>
-                    <p>Prototipo · UI</p>
-                </div>
-            </article>
-            <article class="project">
-                <img class="project__image" src="img/projects/project5.jpg" alt="Vista de una experiencia responsive" width="700" height="430">
-                <div class="project__meta">
-                    <h2>Experiencia responsive</h2>
-                    <p>Web · Mobile</p>
+                    <div class="project__headline">
+                        <h2>kiri-design</h2>
+                        <ul class="project__tags">
+                            <li>Tokens CSS</li>
+                            <li>Sin build</li>
+                            <li>Design system</li>
+                        </ul>
+                    </div>
+                    <p class="project__description">El sistema de diseño detrás de este portafolio: tokens CSS sin build, componentes documentados con cuándo usarlos y cuándo no, y un validador sin dependencias. Este sitio es su prueba &mdash; los colores y el botón de arriba salen en vivo de sus tokens, no de un mock.</p>
+                    <div class="project__links">
+                        <a class="kiri-btn kiri-btn--primario" href="https://design.kiri231.com/taller.html" target="_blank" rel="noreferrer">Ver el taller <span aria-hidden="true">↗</span></a>
+                        <a class="kiri-btn kiri-btn--texto" href="https://github.com/Kiri23/kiri-design" target="_blank" rel="noreferrer">Código <span aria-hidden="true">↗</span></a>
+                    </div>
                 </div>
             </article>
         </section>
