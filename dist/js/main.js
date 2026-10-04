@@ -1,6 +1,18 @@
 const root = document.documentElement;
 const themeButton = document.querySelector('[data-theme-toggle]');
-const savedTheme = localStorage.getItem('kiri-theme');
+
+// localStorage lanza SecurityError cuando el navegador bloquea el almacenamiento
+// (cookies bloqueadas, iframes sandbox, about:blank). Sin esta guarda el script
+// muere al leer el tema guardado y nada de lo de abajo corre, ni el año del footer.
+function readTheme() {
+    try { return localStorage.getItem('kiri-theme'); } catch { return null; }
+}
+
+function saveTheme(theme) {
+    try { localStorage.setItem('kiri-theme', theme); } catch { /* el tema dura solo esta visita */ }
+}
+
+const savedTheme = readTheme();
 
 if (savedTheme) {
     root.dataset.kiri = savedTheme;
@@ -18,7 +30,7 @@ if (themeButton) {
     themeButton.addEventListener('click', () => {
         const nextTheme = root.dataset.kiri === 'claro' ? 'oscuro' : 'claro';
         root.dataset.kiri = nextTheme;
-        localStorage.setItem('kiri-theme', nextTheme);
+        saveTheme(nextTheme);
         updateThemeLabel();
     });
 }

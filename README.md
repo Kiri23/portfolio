@@ -28,10 +28,8 @@ Abrí http://localhost:8080. Es un Caddy que sirve `dist/` tal cual, en el
 `compose.prod.yaml` lo corre vps1, detrás del borde compartido `kiri-edge`
 (Kiri23/kiriInfra, el mismo caddy-docker-proxy que ya corre en vps2): sin
 puertos propios, el label `caddy: kiri231.com` le dice al controller del
-borde a qué contenedor mandar ese dominio. El DNS de kiri231.com ya apunta a
-vps1 (Cloudflare proxied), pero hoy ahí corre Dokploy sirviendo la raíz (ver
-issue #3; `curl -sS https://kiri231.com` muestra "Dokploy … Sign in"). El
-contenedor queda listo para cuando Dokploy+Traefik se dé de baja y kiri-edge
-se instale en vps1.
+borde a qué contenedor mandar ese dominio. El DNS de kiri231.com apunta a
+vps1 (Cloudflare proxied).
 
-Sitio publicado: https://kiri23.github.io/portfolio
+Sitio publicado: https://kiri231.com (`curl -sI https://kiri231.com/js/main.js`
+muestra `via: 1.1 Caddy`). Ya no se publica en GitHub Pages.
