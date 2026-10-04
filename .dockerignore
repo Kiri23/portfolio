@@ -3,7 +3,6 @@
 .github
 
 # Assets de desarrollo, no de la imagen
-Asset.jpg
 .DS_Store
 README.md
 
