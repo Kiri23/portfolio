@@ -25,10 +25,13 @@ Abrí http://localhost:8080. Es un Caddy que sirve `dist/` tal cual, en el
 
 ## Despliegue
 
-`compose.prod.yaml` lo corre vps2, detrás del borde compartido `kiri-edge`
-(Kiri23/kiriInfra): sin puertos propios, el label `caddy: kiri231.com` le dice
-al controller del borde a qué contenedor mandar ese dominio. Hoy ese dominio
-lo sirve Dokploy (ver issue #3): el contenedor queda listo, pero el DNS
-todavía no apunta acá.
+`compose.prod.yaml` lo corre vps1, detrás del borde compartido `kiri-edge`
+(Kiri23/kiriInfra, el mismo caddy-docker-proxy que ya corre en vps2): sin
+puertos propios, el label `caddy: kiri231.com` le dice al controller del
+borde a qué contenedor mandar ese dominio. El DNS de kiri231.com ya apunta a
+vps1 (Cloudflare proxied), pero hoy ahí corre Dokploy sirviendo la raíz (ver
+issue #3; `curl -sS https://kiri231.com` muestra "Dokploy … Sign in"). El
+contenedor queda listo para cuando Dokploy+Traefik se dé de baja y kiri-edge
+se instale en vps1.
 
 Sitio publicado: https://kiri23.github.io/portfolio

@@ -42,8 +42,8 @@ jobs:
             sleep 1
           done
           test "$(curl -fsS http://localhost:8080/health)" = "ok"
-          # Las cuatro páginas del sitio y el css que todas cargan.
-          for ruta in / /about.html /work.html /contact.html /css/portfolio.css; do
+          # Las cuatro páginas del sitio y los assets que todas cargan.
+          for ruta in / /about.html /work.html /contact.html /css/portfolio.css /img/portrait.jpg /js/main.js; do
             codigo=$(curl -fsS -o /dev/null -w "%{http_code}" "http://localhost:8080$ruta")
             echo "GET $ruta -> $codigo"
             test "$codigo" = 200
@@ -70,14 +70,18 @@ jobs:
           docker push "$IMAGE:latest"
 
   # Copia el patrón de Kiri23/kiri-design (.github/workflows/container.yml).
-  # Se salta, no falla, mientras vars.VPS_HOST esté vacío: el acceso a vps2
+  # Se salta, no falla, mientras vars.VPS_HOST esté vacío: el acceso a vps1
   # (Tailscale OIDC + ssh como ci) lo configura el wizard de Kiri23/kiriInfra,
-  # `scripts/setup-ci-tailscale.sh portfolio`. El 80/443 es del borde
-  # kiri-edge, que toma las labels de compose.prod.yaml solo: sin caddy reload.
+  # `VPS=vps1 deno run --no-config -A scripts/setup-ci-tailscale.ts portfolio`
+  # (.ts, no .sh). El 80/443 es del borde kiri-edge, que toma las labels de
+  # compose.prod.yaml solo: sin caddy reload.
   #
-  # kiri231.com hoy lo sirve Dokploy (issue #3): este deploy deja el
-  # contenedor listo en kiri-edge, pero apuntar el dominio ahí es un paso
-  # aparte, posterior a este PR.
+  # El DNS de kiri231.com ya apunta a vps1, pero hoy ahí corre Dokploy+Traefik
+  # sirviendo la raíz (issue #3). Este deploy deja el contenedor listo en
+  # kiri-edge; Dokploy se da de baja y kiri-edge se instala en vps1 (mismo
+  # caddy-docker-proxy que vps2) en un paso aparte, posterior a este PR — a
+  # partir de ahí vars.VPS_HOST/VPS_PUBLIC_IP ya son los de vps1 y este job
+  # no cambia.
   deploy:
     needs: build
     if: github.event_name == 'push' && github.ref == 'refs/heads/master' && vars.VPS_HOST != ''
@@ -104,13 +108,13 @@ jobs:
           "mkdir -p ${{ env.DEPLOY_DIR }}
           && (docker network inspect kiri-edge >/dev/null 2>&1 || docker network create kiri-edge 2>/dev/null || docker network inspect kiri-edge >/dev/null)"
 
-      - name: Copy compose to vps2
+      - name: Copy compose to the VPS
         run: >
           scp -o StrictHostKeyChecking=accept-new
           compose.prod.yaml
           ${{ vars.VPS_USER }}@${{ vars.VPS_HOST }}:${{ env.DEPLOY_DIR }}/
 
-      # La imagen es pública: vps2 la baja sin docker login.
+      # La imagen es pública: la VPS la baja sin docker login.
       - name: Pull and start the new image
         run: >
           ssh -o StrictHostKeyChecking=accept-new ${{ vars.VPS_USER }}@${{ vars.VPS_HOST }}

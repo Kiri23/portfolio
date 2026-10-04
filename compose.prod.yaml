@@ -1,14 +1,18 @@
-# Producción en vps2. Sin ports: el 80 y el 443 son del borde compartido
-# kiri-edge (Kiri23/kiriInfra, services/kiri-edge). Su controller lee las
-# labels caddy de los contenedores en la red kiri-edge y le manda la config al
-# server: no hay Caddyfile que editar ni reload que hacer. La imagen es pública
-# y se construye en CI: acá no hay build.
+# Producción en vps1. Sin ports: el 80 y el 443 son del borde compartido
+# kiri-edge (Kiri23/kiriInfra, services/kiri-edge, el mismo caddy-docker-proxy
+# que en vps2). Su controller lee las labels caddy de los contenedores en la
+# red kiri-edge y le manda la config al server: no hay Caddyfile que editar ni
+# reload que hacer. La imagen es pública y se construye en CI: acá no hay
+# build.
 #
 # Sin container_name: el controller engancha por la IP del contenedor en
 # kiri-edge ({{upstreams 8080}}), no por nombre.
 #
-# El dominio kiri231.com hoy lo ocupa Dokploy (ver issue #3): esta label deja
-# el contenedor listo, pero el DNS/reverse proxy no apunta acá todavía.
+# El dominio kiri231.com apunta en DNS a vps1 (Cloudflare proxied), pero hoy
+# ahí corre Dokploy+Traefik sirviendo la raíz (ver issue #3,
+# `curl -sS https://kiri231.com` muestra "Dokploy … Sign in"). Este label
+# deja el contenedor listo para cuando Dokploy se reemplace por kiri-edge en
+# vps1; hasta entonces el tráfico real no llega acá.
 name: portfolio
 
 services:
@@ -19,6 +23,8 @@ services:
     networks:
       - kiri-edge
     labels:
+      # Sin www: el wildcard *.kiri231.com apunta a vps2, no a vps1 — un
+      # www.kiri231.com acá caería en el servidor equivocado.
       caddy: kiri231.com
       caddy.reverse_proxy: "{{upstreams 8080}}"   # el puerto DENTRO del contenedor
 
