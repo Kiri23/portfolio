@@ -1,0 +1,141 @@
+name: Container
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  IMAGE: ghcr.io/kiri23/portfolio
+  DEPLOY_DIR: deploy/portfolio
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Build
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          load: true
+          tags: |
+            ${{ env.IMAGE }}:${{ github.sha }}
+            ${{ env.IMAGE }}:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Run
+        run: docker run -d --name portfolio -p 8080:8080 "$IMAGE:$GITHUB_SHA"
+
+      - name: Smoke test
+        run: |
+          for _ in $(seq 1 20); do
+            curl -fsS http://localhost:8080/health >/dev/null 2>&1 && break
+            sleep 1
+          done
+          test "$(curl -fsS http://localhost:8080/health)" = "ok"
+          # Las cuatro páginas del sitio y los assets que todas cargan.
+          for ruta in / /about.html /work.html /contact.html /css/portfolio.css /img/portrait.jpg /js/main.js; do
+            codigo=$(curl -fsS -o /dev/null -w "%{http_code}" "http://localhost:8080$ruta")
+            echo "GET $ruta -> $codigo"
+            test "$codigo" = 200
+          done
+          # La raíz tiene que servir dist/index.html, no otra cosa.
+          curl -fsS http://localhost:8080/ | grep -qF "Christian Nogueras · Software, datos e IA"
+
+      - name: Logs if it failed
+        if: failure()
+        run: docker logs portfolio || true
+
+      - name: Log in to GHCR
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        run: |
+          docker push "$IMAGE:$GITHUB_SHA"
+          docker push "$IMAGE:latest"
+
+  # Copia el patrón de Kiri23/kiri-design (.github/workflows/container.yml).
+  # Se salta, no falla, mientras vars.VPS_HOST esté vacío: el acceso a vps1
+  # (Tailscale OIDC + ssh como ci) lo configura el wizard de Kiri23/kiriInfra,
+  # `VPS=vps1 deno run --no-config -A scripts/setup-ci-tailscale.ts portfolio`
+  # (.ts, no .sh). El 80/443 es del borde kiri-edge, que toma las labels de
+  # compose.prod.yaml solo: sin caddy reload.
+  #
+  # El DNS de kiri231.com ya apunta a vps1, pero hoy ahí corre Dokploy+Traefik
+  # sirviendo la raíz (issue #3). Este deploy deja el contenedor listo en
+  # kiri-edge; Dokploy se da de baja y kiri-edge se instala en vps1 (mismo
+  # caddy-docker-proxy que vps2) en un paso aparte, posterior a este PR — a
+  # partir de ahí vars.VPS_HOST/VPS_PUBLIC_IP ya son los de vps1 y este job
+  # no cambia.
+  deploy:
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master' && vars.VPS_HOST != ''
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    concurrency:
+      group: deploy-prod
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: tailscale/github-action@v4
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          audience: ${{ secrets.TS_AUDIENCE }}
+          tags: tag:ci
+          ping: ${{ vars.VPS_HOST }}
+
+      - name: Prepare the deploy dir and the shared kiri-edge network
+        run: >
+          ssh -o StrictHostKeyChecking=accept-new ${{ vars.VPS_USER }}@${{ vars.VPS_HOST }}
+          "mkdir -p ${{ env.DEPLOY_DIR }}
+          && (docker network inspect kiri-edge >/dev/null 2>&1 || docker network create kiri-edge 2>/dev/null || docker network inspect kiri-edge >/dev/null)"
+
+      - name: Copy compose to the VPS
+        run: >
+          scp -o StrictHostKeyChecking=accept-new
+          compose.prod.yaml
+          ${{ vars.VPS_USER }}@${{ vars.VPS_HOST }}:${{ env.DEPLOY_DIR }}/
+
+      # La imagen es pública: la VPS la baja sin docker login.
+      - name: Pull and start the new image
+        run: >
+          ssh -o StrictHostKeyChecking=accept-new ${{ vars.VPS_USER }}@${{ vars.VPS_HOST }}
+          "cd ${{ env.DEPLOY_DIR }}
+          && export IMAGE_TAG=${{ github.sha }}
+          && docker compose -f compose.prod.yaml pull
+          && docker compose -f compose.prod.yaml up -d --no-build --remove-orphans"
+
+      - name: Report the status through Cloudflare
+        continue-on-error: true
+        run: >
+          curl -s -o /dev/null -w "through Cloudflare: HTTP %{http_code}\n"
+          https://kiri231.com/health
+
+      - name: Check the origin directly
+        run: |
+          for _ in $(seq 1 20); do
+            if [ "$(curl -sf --connect-timeout 5 --max-time 10 --resolve kiri231.com:443:${{ vars.VPS_PUBLIC_IP }} https://kiri231.com/health)" = "ok" ]; then
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "the origin never became ready"
+          exit 1

@@ -1,0 +1,20 @@
+# Git y CI
+.git
+.github
+
+# Dev: fuente sass, no lo que sirve el navegador (las páginas usan css/portfolio.css)
+scss/
+node_modules/
+package.json
+package-lock.json
+
+# Assets de desarrollo, no de la imagen
+Asset.jpg
+.DS_Store
+.gitignore
+README.md
+
+# Lo que arma la imagen, no lo que sirve
+Dockerfile
+.dockerignore
+compose.prod.yaml
