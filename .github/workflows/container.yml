@@ -76,12 +76,8 @@ jobs:
   # (.ts, no .sh). El 80/443 es del borde kiri-edge, que toma las labels de
   # compose.prod.yaml solo: sin caddy reload.
   #
-  # El DNS de kiri231.com ya apunta a vps1, pero hoy ahí corre Dokploy+Traefik
-  # sirviendo la raíz (issue #3). Este deploy deja el contenedor listo en
-  # kiri-edge; Dokploy se da de baja y kiri-edge se instala en vps1 (mismo
-  # caddy-docker-proxy que vps2) en un paso aparte, posterior a este PR — a
-  # partir de ahí vars.VPS_HOST/VPS_PUBLIC_IP ya son los de vps1 y este job
-  # no cambia.
+  # kiri231.com apunta en DNS a vps1 (Cloudflare proxied) y kiri-edge sirve
+  # la raíz desde este contenedor; vars.VPS_HOST/VPS_PUBLIC_IP son los de vps1.
   deploy:
     needs: build
     if: github.event_name == 'push' && github.ref == 'refs/heads/master' && vars.VPS_HOST != ''

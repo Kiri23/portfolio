@@ -8,11 +8,8 @@
 # Sin container_name: el controller engancha por la IP del contenedor en
 # kiri-edge ({{upstreams 8080}}), no por nombre.
 #
-# El dominio kiri231.com apunta en DNS a vps1 (Cloudflare proxied), pero hoy
-# ahí corre Dokploy+Traefik sirviendo la raíz (ver issue #3,
-# `curl -sS https://kiri231.com` muestra "Dokploy … Sign in"). Este label
-# deja el contenedor listo para cuando Dokploy se reemplace por kiri-edge en
-# vps1; hasta entonces el tráfico real no llega acá.
+# El dominio kiri231.com apunta en DNS a vps1 (Cloudflare proxied) y kiri-edge
+# le manda la raíz a este contenedor por el label de abajo.
 name: portfolio
 
 services:
