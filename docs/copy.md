@@ -29,15 +29,23 @@ Source of truth for the text on kiri231.com. The HTML reads from here and from p
 
 ## Work
 
-One file per project in [`projects/`](projects/). Adding a project means adding a file with these fields:
+One file per project in [`projects/`](projects/). Adding a project means adding a file. The site reads the folder at build time.
 
-- **Order:** position on the Work page.
-- **One-liner:** what it is and who it's for, in one sentence.
-- **Problem:** what hurt, in two sentences at most.
-- **What I built:** what it does, in first person.
-- **The hard part:** optional.
-- **Stack:** technologies, comma-separated.
-- **Links:** demo and code, or "Code is private".
+Frontmatter:
+
+- `name`
+- `order`: position on the Work page.
+- `oneliner`: what it is and who it's for, in one sentence.
+- `stack`: list of technologies. The tech filter uses it.
+- `code`: repo URL, or `private`.
+- `links`: optional list of `{ label, url }` (demo, workshop).
+- `note`: optional caveat shown next to the links.
+
+Body sections:
+
+- `## Problem`: what hurt, in two sentences at most.
+- `## What I built`: what it does, in first person.
+- `## The hard part`: optional. Leave it out if there isn't a real one.
 
 ## Contact
 
