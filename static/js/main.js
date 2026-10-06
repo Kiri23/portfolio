@@ -21,8 +21,8 @@ if (savedTheme) {
 function updateThemeLabel() {
     if (!themeButton) return;
     const isLight = root.dataset.kiri === 'claro';
-    themeButton.textContent = isLight ? 'Oscuro' : 'Claro';
-    themeButton.setAttribute('aria-label', `Cambiar a modo ${isLight ? 'oscuro' : 'claro'}`);
+    themeButton.textContent = isLight ? 'Dark' : 'Light';
+    themeButton.setAttribute('aria-label', `Switch to ${isLight ? 'dark' : 'light'} mode`);
 }
 
 if (themeButton) {

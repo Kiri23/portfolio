@@ -13,7 +13,7 @@ Source of truth for the text on kiri231.com. The HTML reads from here and from p
 ## Home
 
 - **Name:** Christian Nogueras
-- **Headline:** Full-stack engineer. Lately, tooling that lets AI agents drive real systems.
+- **Headline:** Full-stack and agentic engineer.
 - **Intro:** I build web products end to end: React and TypeScript in the browser, Python, Node, and .NET behind it. My latest work gives AI agents a safe way into an existing platform.
 - **Button:** See my work
 
@@ -29,6 +29,9 @@ Source of truth for the text on kiri231.com. The HTML reads from here and from p
 
 ## Work
 
+- **Headline:** Work that ships.
+- **Intro:** From AI agents on an enterprise platform to a design system with no build step. Each one starts with a problem and ends with the fix I built for it.
+
 One file per project in [`projects/`](projects/). Adding a project means adding a file. The site reads the folder at build time.
 
 Frontmatter:
@@ -40,6 +43,8 @@ Frontmatter:
 - `code`: repo URL, or `private`.
 - `links`: optional list of `{ label, url }` (demo, workshop).
 - `note`: optional caveat shown next to the links.
+- `image`: optional screenshot path under `static/` (e.g. `/img/projects/rutero-resumen.png`).
+- `image_alt`: alt text for `image`.
 
 Body sections:
 

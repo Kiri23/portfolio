@@ -10,3 +10,8 @@ README.md
 Dockerfile
 .dockerignore
 compose.prod.yaml
+
+# Dependencias y salida del build: la imagen las genera adentro
+node_modules
+build
+.svelte-kit
