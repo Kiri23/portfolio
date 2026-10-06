@@ -1,2 +1,6 @@
 # Worktrees que crean los agentes de Claude Code
 .claude/worktrees/
+
+node_modules/
+build/
+.svelte-kit/

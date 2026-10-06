@@ -43,13 +43,18 @@ jobs:
           done
           test "$(curl -fsS http://localhost:8080/health)" = "ok"
           # Las cuatro páginas del sitio y los assets que todas cargan.
-          for ruta in / /about.html /work.html /contact.html /css/portfolio.css /img/portrait.jpg /js/main.js; do
+          for ruta in / /about.html /work.html /contact.html /about /work /contact /resume.pdf /css/portfolio.css /img/portrait.jpg /js/main.js; do
             codigo=$(curl -fsS -o /dev/null -w "%{http_code}" "http://localhost:8080$ruta")
             echo "GET $ruta -> $codigo"
             test "$codigo" = 200
           done
-          # La raíz tiene que servir dist/index.html, no otra cosa.
-          curl -fsS http://localhost:8080/ | grep -qF "Christian Nogueras · Software, datos e IA"
+          # La raíz tiene que servir el index.html del build, no otra cosa.
+          curl -fsS http://localhost:8080/ | grep -qF "Christian Nogueras · Full-stack and agentic engineer"
+          # Work se arma desde docs/projects/: tiene que traer cada proyecto.
+          for proyecto in docs/projects/*.md; do
+            nombre=$(sed -n 's/^name: "\(.*\)"$/\1/p' "$proyecto")
+            curl -fsS http://localhost:8080/work | grep -qF "<h2>$nombre</h2>"
+          done
 
       - name: Logs if it failed
         if: failure()

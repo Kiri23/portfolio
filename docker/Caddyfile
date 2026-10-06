@@ -7,5 +7,6 @@
 :8080 {
 	root * /srv
 	respond /health "ok" 200
+	try_files {path} {path}.html
 	file_server
 }

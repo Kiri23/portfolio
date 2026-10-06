@@ -7,6 +7,8 @@ code: private
 links:
   - { label: Demo, url: https://rutero.kiri231.com }
 note: "Photos return sample invoices in the public demo."
+image: /img/projects/rutero-resumen.png
+image_alt: "Rutero screen: a 12-stop route ordered by town, with estimated time and distance and a View in Maps button"
 ---
 
 ## Problem
