@@ -43,7 +43,15 @@ jobs:
           done
           test "$(curl -fsS http://localhost:8080/health)" = "ok"
           # Las cuatro páginas del sitio y los assets que todas cargan.
-          for ruta in / /about.html /work.html /contact.html /about /work /contact /resume.pdf /css/portfolio.css /img/portrait.jpg /js/main.js; do
+          for ruta in / /about.html /work.html /contact.html /about /work /contact /resume.pdf /img/portrait.jpg; do
+            codigo=$(curl -fsS -o /dev/null -w "%{http_code}" "http://localhost:8080$ruta")
+            echo "GET $ruta -> $codigo"
+            test "$codigo" = 200
+          done
+          # El CSS y el JS llevan un hash en el nombre: se piden los que enlaza la página.
+          assets=$(curl -fsS http://localhost:8080/ | grep -oE '/_app/immutable/[^"]+\.(css|js)' | sort -u)
+          test -n "$assets"
+          for ruta in $assets; do
             codigo=$(curl -fsS -o /dev/null -w "%{http_code}" "http://localhost:8080$ruta")
             echo "GET $ruta -> $codigo"
             test "$codigo" = 200
