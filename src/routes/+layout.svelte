@@ -1,5 +1,7 @@
 <script>
 	import { page } from '$app/state';
+	import '$lib/portfolio.css';
+	import mainScript from '$lib/main.js?url';
 
 	let { children } = $props();
 
@@ -14,6 +16,10 @@
 		return page.url.pathname === href;
 	}
 </script>
+
+<svelte:head>
+	<script src={mainScript} defer></script>
+</svelte:head>
 
 <header class="site-header">
 	<div class="site-header__inner">
