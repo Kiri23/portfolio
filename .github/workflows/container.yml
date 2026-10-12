@@ -21,6 +21,12 @@ jobs:
 
       - uses: docker/setup-buildx-action@v3
 
+      # Un Caddyfile inválido solo se vería al arrancar el contenedor; esto lo corta antes.
+      - name: Validate the Caddyfile
+        run: >
+          docker run --rm -v "$PWD/docker/Caddyfile:/etc/caddy/Caddyfile:ro"
+          caddy:2-alpine caddy validate --config /etc/caddy/Caddyfile
+
       - name: Build
         uses: docker/build-push-action@v6
         with:
