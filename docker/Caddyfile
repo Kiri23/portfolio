@@ -7,6 +7,10 @@
 :8080 {
 	root * /srv
 	respond /health "ok" 200
+	# El HTML no lleva max-age: sin esto el navegador reusa una home vieja que
+	# pide CSS que ya no existe. Los assets con hash en el nombre sí se cachean.
+	@html path_regexp html (^/([^./]+/?)?$|\.html$)
+	header @html Cache-Control "no-cache"
 	try_files {path} {path}.html
 	file_server
 }
