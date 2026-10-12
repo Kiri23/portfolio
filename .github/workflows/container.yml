@@ -58,6 +58,10 @@ jobs:
           done
           # La raíz tiene que servir el index.html del build, no otra cosa.
           curl -fsS http://localhost:8080/ | grep -qF "Christian Nogueras · Full-stack and agentic engineer"
+          # El HTML va con no-cache: si el navegador reusa una home vieja, pide CSS que ya no existe.
+          for ruta in / /work /contact; do
+            curl -fsSI "http://localhost:8080$ruta" | grep -qi '^cache-control: no-cache' || { echo "$ruta sin no-cache"; exit 1; }
+          done
           # Work se arma desde docs/projects/: tiene que traer cada proyecto.
           for proyecto in docs/projects/*.md; do
             nombre=$(sed -n 's/^name: "\(.*\)"$/\1/p' "$proyecto")
