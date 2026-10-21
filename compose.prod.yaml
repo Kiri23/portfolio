@@ -24,6 +24,11 @@ services:
       # www.kiri231.com acá caería en el servidor equivocado.
       caddy: kiri231.com
       caddy.reverse_proxy: "{{upstreams 8080}}"   # el puerto DENTRO del contenedor
+      # Los nombres del grafo son https://kiri231.com/ontologia#…, y el servidor que los
+      # define corre en ontology.kiri231.com (Kiri23/ontologyLearning, GET /ontologia).
+      # Abrir el nombre lleva a su definición. El #fragmento no viaja al servidor y el
+      # navegador lo conserva en la redirección.
+      caddy.redir: "/ontologia* https://ontology.kiri231.com{uri} 308"
 
 networks:
   kiri-edge:
